@@ -1,8 +1,28 @@
-# OwnLocal Business README
+# OwnLocal Business' API
+
+OwnLocal Business API is an RESTful API built with Ruby on Rails that serves
+business information in a page format.
 
 ## Setup
 
+### Prerequisites
 
+This project requires:
+
+- `Ruby`
+- `Ruby on Rails`
+
+### Install
+
+To get started please:
+
+- Click `Clone or download`
+- Download the ZIP or clone the repo
+    - Unzip the file and launch in your preferred text editor
+    - Navigate to the folder in your Terminal and execute `bundle install`
+- Clone the Repo
+    - Launch in your preferred text editor and execute `bundle install`
+- Launch your Rails Server: `rails server`
 
 
 

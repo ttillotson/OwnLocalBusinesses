@@ -32,8 +32,9 @@ class BusinessesController < ApplicationController
 
     def show
         @business = Business.find(params[:id])
-
-        render :show
+        
+        rescue ActiveRecord::RecordNotFound
+            render json: ["This business was unable to be found. Please contact your administrator if you believe this is an error."], status: 404
     end
 
     # Private methods were intended to provide default values if passed
