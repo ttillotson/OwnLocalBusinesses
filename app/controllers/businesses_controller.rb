@@ -26,6 +26,7 @@ class BusinessesController < ApplicationController
         if @errors.empty?  
             render :index 
         else
+            @businesses = []
             render :index, status: 416
         end
     end

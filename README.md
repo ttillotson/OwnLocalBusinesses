@@ -7,10 +7,10 @@ business information in a page format.
 
 ### Prerequisites
 
-This project requires:
+This project utilizes:
 
-- `Ruby`
-- `Ruby on Rails`
+- `Ruby` v 2.5.0
+- `Ruby on Rails` v 5.2.0
 
 ### Install
 
@@ -18,38 +18,50 @@ To get started please:
 
 - Click `Clone or download`
 - Download the ZIP or clone the repo
-    - Unzip the file and launch in your preferred text editor
-    - Navigate to the folder in your Terminal and execute `bundle install`
+    - Unzip the file and launch in your preferred text editor.
+    - Navigate to the folder in your Terminal and execute `bundle install` in the command line.
 - Clone the Repo
-    - Launch in your preferred text editor and execute `bundle install`
-- Launch your Rails Server: `rails server`
+    - Launch in your preferred text editor and execute `bundle install` in the command line.
+- Set up the database:
+    - execute `rake db:setup` in the command line.
+- Launch your Rails Server by typing `rails server` in the command line & going to `https://localhost:3000/`
 
+## Using the API Endpoints
 
+This project features 2 API endpoints:
 
+- `index`: HTTP `GET` request that displays a slice of the total available businesses based on the passed `page` and `per_page` parameters; defaults 1 & 50 respectively.
+    - `localhost:3000/businesses?page=1&per_page=50`
 
+![index_demo](https://user-images.githubusercontent.com/29738420/43109553-335ef748-8e9c-11e8-9662-4fed90936103.gif)
 
+- `show`: HTTP `GET` request that displays a given business' held information from the database
 
+## Future Directions
 
+### Next Best Selection
 
-<!-- This README would normally document whatever steps are necessary to get the
-application up and running.
+While handling errors is an important part of the project, it may be reasonable to always pass the closest possible data that fits a given window. To meet that end, additional methods have been included in the controller that will always pull the closest valid page to a given parameter.
 
-Things you may want to cover:
+### Authentication for Requests
 
-* Ruby version
+While these are API endpoints are great for demonstrative purposes, it may be important down the line to validate all requests and handle the requests accordingly. In light of this, there is an attached validation that can be configured in the top of the controller.
 
-* System dependencies
+## Notes and Considerations
 
-* Configuration
+### Namespace
 
-* Database creation
+This endpoints are designed to run on the standard model namespace. If we needed to preserve it for any reason, we could nest the routes under an api namespace and then nest the controller file as well:
 
-* Database initialization
+```ruby
+    # Routes
 
-* How to run the test suite
+    Rails.application.routes.draw do
+        namespace :api, defaults: { format: :json } do 
+            resources :businesses, defaults: { format: :json }, only: %i(index show)
+        end
+    end
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ... -->
+    # Controller
+    class Api::BusinessesController < ApplicationController
+```
