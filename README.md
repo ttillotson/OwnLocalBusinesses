@@ -37,6 +37,8 @@ This project features 2 API endpoints:
 
 - `show`: HTTP `GET` request that displays a given business' held information from the database
 
+![show_demo](https://user-images.githubusercontent.com/29738420/43110750-9b7c752a-8ea2-11e8-968b-0bac56100753.gif)
+
 ## Future Directions
 
 ### Next Best Selection
