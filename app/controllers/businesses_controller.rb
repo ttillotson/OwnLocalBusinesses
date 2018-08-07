@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
     # Validation for Future Authentication
-    # before_action :validate_session_token
+    before_action :require_signed_in
 
     def index 
         # Set Passed Values or Use Default
@@ -24,7 +24,7 @@ class BusinessesController < ApplicationController
         end
 
         if @errors.empty?  
-            render :index 
+            render :index, status: 200
         else
             @businesses = []
             render :index, status: 416
